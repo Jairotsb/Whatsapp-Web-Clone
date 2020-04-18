@@ -4,7 +4,7 @@ import MoreVertIcon from "@material-ui/icons/MoreVert";
 import ImageIcon from "@material-ui/icons/Image";
 import WorkIcon from "@material-ui/icons/Work";
 import BeachAccessIcon from "@material-ui/icons/BeachAccess";
-import {Paper, Typography, Grid, Card, CardHeader, CardContent, Avatar, List, ListItem, ListItemText, IconButton} from "@material-ui/core";
+import {Paper, Typography, Grid, Card, CardHeader, CardContent, Avatar, List, ListItem, ListItemText, IconButton, Button} from "@material-ui/core";
 const styles = () => ({
  root: {
   padding: "50px 100px",
@@ -30,6 +30,9 @@ const styles = () => ({
  },
  rightContainer:{
   background: "url(https://hdwallsource.com/img/2014/8/my-neighbor-totoro-wallpaper-27981-28703-hd-wallpapers.jpg) center center",
+  backgroundPosition: "center center",
+  backgroundRepeat: "no-repeat", 
+  backgroundSize: "cover",
   flex:1
  },
  heightAdjust: {
@@ -56,6 +59,7 @@ const App = ({classes}) => (
                <RightContainer classes={classes}/>
             </Grid>
           </Card>
+            
       </Grid>
     </Grid>
   </div>
@@ -66,20 +70,24 @@ const list  =[
   {id: 3, name: "Willian", text: "Boa noite", image: <WorkIcon/>},
   {id: 4, name: "Jorge", text: "Material-ui its good", image: <BeachAccessIcon/>}
 ]
+let title = 'Diego'
+const changeName = () => {
+  CardHeader.title = 'Jairo'
+}
 
 const LeftContainer = ({classes}) => (
   <Grid item xs={3}>
     <CardHeader 
     className={classes.rightBorder} 
     avatar={
-    <Avatar aria-label="Recipe" clasName={classes.avatar}>
-      H
+      <Avatar aria-label="Recipe" clasName={classes.avatar}>
+      J
     </Avatar>
     }
-    />
+    title="Jairo Arcy"/>
     <Paper className={classes.paper} elevation={0}>
       <Typography className={classes.information} variant="subheader">
-          Elemento de texto
+          Aproveite o WhatsApp!
       </Typography>
     </Paper>
     <List>
@@ -89,6 +97,10 @@ const LeftContainer = ({classes}) => (
              <ListItemText primary={item.name} secondary={item.text}/>
           </ListItem>
       ))}
+      <ListItem>
+      <Button size="large" color="primary" variant="contained" onClick={changeName}>ADD</Button>
+
+      </ListItem>
     </List>
   </Grid>
 );
@@ -96,7 +108,7 @@ const RightContainer =  ({classes}) => (
   <Grid className={classes.heightAdjust} item xs={9}>
     <CardHeader avatar={
       <Avatar aria-label="Recipe" className={classes.avatar}>
-        <ImageIcon />
+        <ImageIcon onClick={changeName}/>
       </Avatar>
     }
     action ={
@@ -104,7 +116,7 @@ const RightContainer =  ({classes}) => (
         <MoreVertIcon/>
       </IconButton>
     }
-    title="Diego"
+    title={title}
     />
     <CardContent className={[classes.rightContainer, classes.content]} />
   </Grid>
