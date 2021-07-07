@@ -1,10 +1,10 @@
 import React from "react";
-import {withStyles} from "@material-ui/core/styles";
+import { withStyles } from "@material-ui/core/styles";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
 import ImageIcon from "@material-ui/icons/Image";
 import WorkIcon from "@material-ui/icons/Work";
 import BeachAccessIcon from "@material-ui/icons/BeachAccess";
-import {Paper, Typography, Grid, Card, CardHeader, CardContent, Avatar, List, ListItem, ListItemText, IconButton, Button} from "@material-ui/core";
+import { Paper, Typography, Grid, Card, CardHeader, CardContent, Avatar, List, ListItem, ListItemText, IconButton, Button } from "@material-ui/core";
 const styles = () => ({
  root: {
   padding: "50px 100px",
@@ -45,6 +45,10 @@ const styles = () => ({
  },
   information: {
     color: "#444"
+  }, 
+
+  avatar: {
+    background: 'purple'
   }
 });
 
@@ -80,9 +84,7 @@ const LeftContainer = ({classes}) => (
     <CardHeader 
     className={classes.rightBorder} 
     avatar={
-      <Avatar aria-label="Recipe" clasName={classes.avatar}>
-      J
-    </Avatar>
+      <Avatar aria-label="Recipe" clasName={classes.avatar}>J</Avatar>
     }
     title="Jairo Arcy"/>
     <Paper className={classes.paper} elevation={0}>
@@ -93,14 +95,10 @@ const LeftContainer = ({classes}) => (
     <List>
       {list.map(item => (
           <ListItem>
-             <Avatar>{item.image}</Avatar> 
+             <Avatar className={classes.avatar}>{item.image}</Avatar> 
              <ListItemText primary={item.name} secondary={item.text}/>
           </ListItem>
       ))}
-      <ListItem>
-      <Button size="large" color="primary" variant="contained" onClick={changeName}>ADD</Button>
-
-      </ListItem>
     </List>
   </Grid>
 );
