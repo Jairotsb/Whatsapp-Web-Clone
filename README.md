@@ -1,9 +1,8 @@
    # WhatsApp-Web-Interface-React
-   similar interface to WhatsApp Web made with ReactJs
+   Interface Estática Similar ao WhatsApp-Web Feito com Material-UI :blue_heart:
 
 <p align="center">
    <img src="images/image.png">
-
 </p>
    
    
