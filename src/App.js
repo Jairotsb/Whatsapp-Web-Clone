@@ -12,15 +12,17 @@ import { Paper, Typography, Grid, Card, CardHeader, CardContent, Avatar, List, L
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    padding: "50px 100px",
-    zIndex: 999,
+    padding: "20px 50px",
+    //zIndex: 999,
     position: "absolute",
   },
   card: {
     display: "flex",
-    height: "calc(100vh - 100px)"
+    height: "calc(100vh - 50px)",
+    borderRadius: '0px'
   },
   rightBorder: {
+    //width: 'calc(100vh - 50vh)',
     borderRight: "solid #d0D0D0 1px"
   },
   content: {
@@ -28,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
   },
   background: {
     position: "absolute",
-    height: 200,
+    height: 100,
     width: "100%",
     top: 0,
     background: "#7159C1"
@@ -49,7 +51,8 @@ const useStyles = makeStyles((theme) => ({
     padding: 20
   },
   information: {
-    color: "#444"
+    color: "#444",
+    borderRadius: '0px'
   },
 
   avatar: {
@@ -70,12 +73,18 @@ const useStyles = makeStyles((theme) => ({
   input: {
     marginLeft: theme.spacing(1),
 //    flex: 1,
-    borderRadius: '10px',
+    paddingLeft: '15px',
+    borderRadius: '20px',
     background: 'white',
     padding: '3px',
     width: '85%',
     height: '42px'
   },
+
+  iconSend: {
+    marginLeft: theme.spacing(3)
+
+  }
 
 }))
 
