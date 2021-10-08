@@ -4,8 +4,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
 import SendIcon from '@material-ui/icons/Send';
 import ImageIcon from "@material-ui/icons/Image";
-import WorkIcon from "@material-ui/icons/Work";
-import BeachAccessIcon from "@material-ui/icons/BeachAccess";
+import PersonOutlineIcon from "@material-ui/icons/PersonOutline";
 import InputBase from '@material-ui/core/InputBase';
 import { Paper, Typography, Grid, Card, CardHeader, CardContent, Avatar, List, ListItem, ListItemText, IconButton } from "@material-ui/core";
 
@@ -55,12 +54,8 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: '0px'
   },
 
-  avatar: {
-    background: 'purple'
-  },
-
   inputArea: {
-//    padding: '2px 4px',
+    //    padding: '2px 4px',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
@@ -72,20 +67,45 @@ const useStyles = makeStyles((theme) => ({
 
   input: {
     marginLeft: theme.spacing(1),
-//    flex: 1,
+    //    flex: 1,
     paddingLeft: '15px',
     borderRadius: '20px',
     background: 'white',
     padding: '3px',
-    width: '85%',
+    width: '90%',
     height: '42px'
   },
 
   iconSend: {
     marginLeft: theme.spacing(3)
 
-  }
+  },
 
+  name: {
+    //marginTop: '-1px',
+    paddingLeft: '10px',
+    fontWeight: 'bold',
+    display: 'block'
+  },
+  msg: {
+    fontSize: '10pt',
+    fontWeight: '100',
+    display: 'block',
+    paddingLeft: '10px',
+    paddingTop: '5px'
+  },
+  divider:{
+    minHeight: '1px',
+    height: '1px !important',
+    maxHeight: '0.1px !important',
+    background: '#bfbfc2',
+    width: '270px',
+    transform: 'translateX(70px)',
+  }, 
+  users: {
+    height: '70px'
+
+  }
 }))
 
 export default function App() {
@@ -93,23 +113,18 @@ export default function App() {
   const classes = useStyles()
 
   const list = [
-    { id: 1, name: "Diego", text: "Olá mundo", image: <ImageIcon /> },
-    { id: 2, name: "Jairo", text: "Boa tarde", image: <WorkIcon /> },
-    { id: 3, name: "Willian", text: "Boa noite", image: <WorkIcon /> },
-    { id: 4, name: "Jorge", text: "Material-ui its good", image: <BeachAccessIcon /> }
+    { id: 1, name: "Diego", text: "Olá mundo", image: 'none'},
+    { id: 2, name: "Jairo", text: "Boa tarde", image: 'none' },
+    { id: 3, name: "Willian", text: "Boa noite", image: 'none' },
+    { id: 4, name: "Jorge", text: "Material-ui its good", image: 'none' }
   ]
-
-  let title = 'Diego'
-  const changeName = () => {
-    CardHeader.title = 'Jairo'
-  }
 
   const LeftContainer = () => (
     <Grid item xs={3}>
       <CardHeader
         className={classes.rightBorder}
         avatar={
-          <Avatar aria-label="Recipe" clasName={classes.avatar}>J</Avatar>
+          <Avatar aria-label="Recipe" clasName={classes.avatar} />
         }
         title="Jairo Arcy" />
       <Paper className={classes.paper} elevation={0}>
@@ -119,10 +134,16 @@ export default function App() {
       </Paper>
       <List>
         {list.map(item => (
-          <ListItem>
-            <Avatar className={classes.avatar}>{item.image}</Avatar>
-            <ListItemText primary={item.name} secondary={item.text} />
-          </ListItem>
+          <>
+            <ListItem className={classes.users}>
+              <Avatar className={classes.avatar}>{item.image === 'none' ? <PersonOutlineIcon/> : item.image}</Avatar>
+              <ListItem className={classes.name}>
+                <Typography className={classes.name} variant="p">{item.name}</Typography>
+                <Typography className={classes.msg} variant="p">{item.text}</Typography>
+              </ListItem>
+            </ListItem>
+            <div className={classes.divider}></div>
+          </>
         ))}
       </List>
     </Grid>
@@ -131,7 +152,7 @@ export default function App() {
     <Grid className={classes.heightAdjust} item xs={9}>
       <CardHeader avatar={
         <Avatar aria-label="Recipe" className={classes.avatar}>
-          <ImageIcon onClick={changeName} />
+          <ImageIcon />
         </Avatar>
       }
         action={
@@ -139,7 +160,7 @@ export default function App() {
             <MoreVertIcon />
           </IconButton>
         }
-        title={title}
+        title="Diego"
       />
       <CardContent className={[classes.rightContainer, classes.content]} />
       <Paper component="form" className={classes.inputArea}>
@@ -149,7 +170,7 @@ export default function App() {
           placeholder="Digite uma mensagem"
           inputProps={{ 'aria-label': 'Digite uma mensagem' }}
         />
-        <SendIcon className={classes.iconSend}/>
+        <SendIcon className={classes.iconSend} />
       </Paper>
     </Grid>
   );
