@@ -9,6 +9,10 @@
 - Fork this repository on Github.
 - Clone the forked repository:
   - `git clone https://github.com/Jairotsb/WhatsApp-Web-Interface-React.git`
+- Install dependencies: 
+  - `npm install`
+- Execute project: 
+  - `npm start`
 - Create another branch and enter it:
   - `git branch new-branch`
   - `git switch new-branch`
@@ -31,13 +35,4 @@
   ![VSCode](https://img.shields.io/badge/-VSCode-0085D1?style=flat-square&logo=visual-studio-code&logoColor=white)
   ![Windows](https://img.shields.io/badge/-Windows-00ADEF?style=flat-square&logo=windows&logoColor=white)
   
- ## Interface
-
-
-<p align="center">
-   <img src="images/image.png">
-</p>
-   
-   
-   
    
