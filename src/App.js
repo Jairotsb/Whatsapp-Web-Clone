@@ -1,12 +1,25 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-//import clsx from 'clsx'
+import {
+  Paper,
+  Typography,
+  Grid,
+  Card,
+  CardHeader,
+  CardContent,
+  Avatar,
+  List,
+  ListItem,
+  IconButton,
+  InputBase,
+  TextField
+} from "@material-ui/core";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
 import SendIcon from '@material-ui/icons/Send';
 import ImageIcon from "@material-ui/icons/Image";
 import PersonOutlineIcon from "@material-ui/icons/PersonOutline";
-import InputBase from '@material-ui/core/InputBase';
-import { Paper, Typography, Grid, Card, CardHeader, CardContent, Avatar, List, ListItem, ListItemText, IconButton } from "@material-ui/core";
+import TripOriginIcon from '@material-ui/icons/TripOrigin';
+import MicIcon from '@material-ui/icons/Mic'
 
 
 const useStyles = makeStyles((theme) => ({
@@ -22,10 +35,7 @@ const useStyles = makeStyles((theme) => ({
   },
   rightBorder: {
     //width: 'calc(100vh - 50vh)',
-    borderRight: "solid #d0D0D0 1px"
-  },
-  content: {
-    marginTop: 0
+    borderRight: "solid #d0D0D0 1px",
   },
   background: {
     position: "absolute",
@@ -51,7 +61,7 @@ const useStyles = makeStyles((theme) => ({
   },
   information: {
     color: "#444",
-    borderRadius: '0px'
+    borderRadius: '0px !important',
   },
 
   inputArea: {
@@ -76,9 +86,10 @@ const useStyles = makeStyles((theme) => ({
     height: '42px'
   },
 
-  iconSend: {
-    marginLeft: theme.spacing(3)
-
+  content: {
+    paddingTop: '15px',
+    borderTop: '1px solid #30383d',
+    display: 'block'
   },
 
   name: {
@@ -94,39 +105,41 @@ const useStyles = makeStyles((theme) => ({
     paddingLeft: '10px',
     paddingTop: '5px'
   },
-  divider:{
-    minHeight: '1px',
-    height: '1px !important',
-    maxHeight: '0.1px !important',
-    background: '#bfbfc2',
-    width: '270px',
-    transform: 'translateX(70px)',
-  }, 
   users: {
-    height: '70px'
-
+    height: '70px',
+    paddingRight: '15px'
+  },
+  options: {
+    float: 'right',
+    diplay: 'block'
   }
 }))
 
 export default function App() {
 
   const classes = useStyles()
+  const [iconChange, setIconChange] = React.useState([])
+
 
   const list = [
-    { id: 1, name: "Diego", text: "Olá mundo", image: 'none'},
+    { id: 1, name: "Diego", text: "Olá mundo", image: 'none' },
     { id: 2, name: "Jairo", text: "Boa tarde", image: 'none' },
     { id: 3, name: "Willian", text: "Boa noite", image: 'none' },
     { id: 4, name: "Jorge", text: "Material-ui its good", image: 'none' }
   ]
+
 
   const LeftContainer = () => (
     <Grid item xs={3}>
       <CardHeader
         className={classes.rightBorder}
         avatar={
-          <Avatar aria-label="Recipe" clasName={classes.avatar} />
-        }
-        title="Jairo Arcy" />
+          <Avatar aria-label="Recipe" className={classes.avatar} />
+        }>
+        <TripOriginIcon />
+      </CardHeader>
+
+
       <Paper className={classes.paper} elevation={0}>
         <Typography className={classes.information} variant="subheader">
           Aproveite o WhatsApp!
@@ -136,45 +149,17 @@ export default function App() {
         {list.map(item => (
           <>
             <ListItem className={classes.users}>
-              <Avatar className={classes.avatar}>{item.image === 'none' ? <PersonOutlineIcon/> : item.image}</Avatar>
-              <ListItem className={classes.name}>
+              <Avatar className={classes.avatar}>{item.image === 'none' ? <PersonOutlineIcon /> : item.image}</Avatar>
+              <ListItem className={classes.content}>
                 <Typography className={classes.name} variant="p">{item.name}</Typography>
                 <Typography className={classes.msg} variant="p">{item.text}</Typography>
               </ListItem>
             </ListItem>
-            <div className={classes.divider}></div>
           </>
         ))}
       </List>
     </Grid>
   );
-  const RightContainer = () => (
-    <Grid className={classes.heightAdjust} item xs={9}>
-      <CardHeader avatar={
-        <Avatar aria-label="Recipe" className={classes.avatar}>
-          <ImageIcon />
-        </Avatar>
-      }
-        action={
-          <IconButton>
-            <MoreVertIcon />
-          </IconButton>
-        }
-        title="Diego"
-      />
-      <CardContent className={[classes.rightContainer, classes.content]} />
-      <Paper component="form" className={classes.inputArea}>
-        <InputBase
-          align={"center"}
-          className={classes.input}
-          placeholder="Digite uma mensagem"
-          inputProps={{ 'aria-label': 'Digite uma mensagem' }}
-        />
-        <SendIcon className={classes.iconSend} />
-      </Paper>
-    </Grid>
-  );
-
 
   return (
     <>
@@ -184,7 +169,32 @@ export default function App() {
           <Card className={classes.card}>
             <Grid container>
               <LeftContainer classes={classes} />
-              <RightContainer classes={classes} />
+              <Grid className={classes.heightAdjust} item xs={9}>
+                <CardHeader avatar={
+                  <Avatar className={classes.avatar}>
+                    <ImageIcon />
+                  </Avatar>
+                }
+                  action={
+                    <IconButton>
+                      <MoreVertIcon />
+                    </IconButton>
+                  }
+                  title="Diego"
+                />
+                <CardContent className={classes.rightContainer} />
+                <Paper component="form" className={classes.inputArea}>
+                  <InputBase
+                    onChange={e => setIconChange(e.target.value)}
+                    className={classes.input}
+                    align={"center"}
+                    placeholder="Digite uma mensagem"
+                    inputProps={{ 'aria-label': 'Digite uma mensagem' }}
+                  />
+                  {iconChange === '' ? <MicIcon style={{ marginLeft: '30px' }}/> : <SendIcon style={{ marginLeft: '30px' }} />}
+
+                </Paper>
+              </Grid>
             </Grid>
           </Card>
 

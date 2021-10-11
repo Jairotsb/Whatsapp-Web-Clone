@@ -18,7 +18,7 @@
   - `git switch new-branch`
 - Make the changes and then:
   - `git add .`
-  - `git commit -m "new improviments added :godmode:"`
+  - `git commit -m "new improviments added :godmode: "`
   - `git push -u origin new-branch`
 - Open a Pull Request on Github.
 
