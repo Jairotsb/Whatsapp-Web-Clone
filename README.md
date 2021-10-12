@@ -1,6 +1,7 @@
 # WhatsApp-Web-Interface-React
    A similar interface of whatsapp web :godmode:
 
+<img src="images/interface1.0.1.png"/>
 
 ## Contributing 
 
@@ -11,6 +12,7 @@
   - `git clone https://github.com/Jairotsb/WhatsApp-Web-Interface-React.git`
 - Install dependencies: 
   - `npm install`
+  - `npm install -g react` **no react dependencie**
 - Execute project: 
   - `npm start`
 - Create another branch and enter it:
